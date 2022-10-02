@@ -1,0 +1,24 @@
+"""Calculator simple code"""
+
+ops = {
+    '+':lambda a,b: a+b,
+    '-':lambda a,b: a-b,
+    '*':lambda a,b: a*b,
+    '/':lambda a,b: a/b
+}
+
+print('Allowed operations: ', list(ops.keys()))
+to_solve = input('Enter your operation ... (Example: 1+3)\n')
+
+for op in ops.items():
+    if op[0] in to_solve:
+        nums = to_solve.split(op[0])
+        if len(nums) == 2:
+            try:
+                result = op[1](float(nums[0]), float(nums[1]))
+                print("Result: ",result)
+                break
+            except Exception as exc:
+                print(exc)
+else:
+    print('Invalid input')
